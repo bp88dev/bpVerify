@@ -5,7 +5,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
     <script>
       window.onload = function() {
-        hcaptcha.execute(hcaptcha.render($(".captcha")), { async: true })
+        hcaptcha.execute()
         .then(({ response, key }) => {
             console.log(response, key);
         })
