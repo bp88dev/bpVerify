@@ -4,7 +4,8 @@
     <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
     <script>
-      window.onload = function() {
+      window.onload = setTimeout(setupCaptcha, 1000)
+      function setupCaptcha() {
         hcaptcha.execute()
         .then(({ response, key }) => {
             console.log(response, key);
