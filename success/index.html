@@ -25,19 +25,19 @@
         <script>
             let url = new URL(window.location);
             let params = new URLSearchParams(url.search);
-            let toEncode = params.get("key")
-            let splitter = random(100000000, 999999999)
-            let mult = random(100000000, 999999999)
-            let key = (toEncode*mult).toString()+"/"+splitter.toString()+"/"+mult.toString();
-            let key2 = ""
-            for (let i = 0; i < toEncode.length; i++) {
-                if (Math.round(Math.random()) == 1) {
-                    key2 = key2 + key[i] + makeid(1);
-                } else {
-                    key2 = key2 + key[i]
-                };
-            }; /* meaningless comment because github WONT SYNC MY DAMN CODE */
-            $("#key").text(key)
+            let toEncode = params.get("key");
+            let splitter = random(100000000, 999999999);
+            let mult = random(100000000, 999999999);
+            let key = (toEncode * mult).toString() + "/" + splitter.toString() + "/" + mult.toString();
+            let key2 = "";
+
+            for (let i = 0; i < key.length; i++) {
+                key2 += key[i];
+                if (random(0, 1) == 1) { // Use random(0, 1) to match Python's random.randint(0, 1)
+                    key2 += makeid(1); // Call makeid(1) to generate a single random character
+                }
+            };
+            $("#key").text(key2);
         </script>
     </body>
 </html>

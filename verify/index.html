@@ -32,11 +32,15 @@
             }
             return false
         };
+        $('#myForm').submit(function (evt) {
+          evt.preventDefault();
+          submit()
+        });
     </script>
   </head>
   <body>
     <h1>bpVerify</h1>
-    <form id="myForm" onsubmit="javascript:event.preventDefault(); submit();" method="POST">
+    <form id="myForm" method="POST">
       <div class="h-captcha" data-sitekey="44744750-3c68-4f10-9574-b4d260fc3946" data-theme="dark"></div>
       <button type="submit">Submit</button>
     </form>
