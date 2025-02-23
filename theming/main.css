@@ -1,6 +1,7 @@
 body {
     font-family: 'Montserrat';
     background-color: #000000;
+    color: #ffffff;
   }
   .footer {
     position: absolute;
@@ -10,7 +11,7 @@ body {
     right: 0;
   }
   text {
-    color: #000000
+    color: #ffffff;
   }
   .mainContainer {
     margin: 0;
