@@ -2,6 +2,7 @@
     <head>
         <title>bpVerify | Success!</title>
         <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bignumber.js/9.1.2/bignumber.min.js"></script>  </script>
         <script>
             function makeid(length) {
                 let result = '';
@@ -25,18 +26,19 @@
         <script>
             let url = new URL(window.location);
             let params = new URLSearchParams(url.search);
-            let toEncode = params.get("key");
-            let splitter = random(100000000, 999999999);
-            let mult = random(100000000, 999999999);
-            let key = (toEncode * mult).toString() + "/" + splitter.toString() + "/" + mult.toString();
+            let toEncodeBig = new BigNumber(toEncode); // Convert to BigNumber
+            let splitterBig = new BigNumber(random(100000000, 999999999));
+            let multBig = new BigNumber(random(100000000, 999999999));
+
+            let keyBig = toEncodeBig.multipliedBy(multBig).toString() + "/" + splitterBig.toString() + "/" + multBig.toString(); // Use BigNumber methods
             let key2 = "";
 
-            for (let i = 0; i < key.length; i++) {
-                key2 += key[i];
-                if (random(0, 1) == 1) { // Use random(0, 1) to match Python's random.randint(0, 1)
-                    key2 += makeid(1); // Call makeid(1) to generate a single random character
+            for (let i = 0; i < keyBig.length; i++) {
+                key2 += keyBig[i];
+                if (random(0, 1) == 1) {
+                    key2 += makeid(1);
                 }
-            };
+            }
             $("#key").text(key2);
         </script>
     </body>

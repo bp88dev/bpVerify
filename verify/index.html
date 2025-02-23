@@ -15,27 +15,30 @@
             console.error(err);
         });*/
       };
-        function submit() {
-            // Get the hCaptcha response
-            const hCaptchaResponse = hcaptcha.getResponse();
+        /*function submit() {*/
+        $(document).ready(function() { // Ensure DOM is fully loaded
+            $('#myForm').submit(function (evt) {
+                evt.preventDefault();
+                // Get the hCaptcha response
+                const hCaptchaResponse = hcaptcha.getResponse();
 
-            if (hcaptcha.getResponse() != "") {
-                // hCaptcha verification successful, redirect to another page
-                let url = new URL(window.location);
-                let params = new URLSearchParams(url.search);
-                let key = params.get("key");
-                window.location.href = '/bpVerify/success/?key='+key;
-            } else {
-                // hCaptcha verification failed, show an error message
-                alert('Please complete the hCaptcha.');
-                captcha.execute();
-            }
-            return false
-        };
-        $('#myForm').submit(function (evt) {
+                if (hcaptcha.getResponse() != "") {
+                    // hCaptcha verification successful, redirect to another page
+                    let url = new URL(window.location);
+                    let params = new URLSearchParams(url.search);
+                    let key = params.get("key");
+                    window.location.href = '/bpVerify/success/?key='+key;
+                } else {
+                    // hCaptcha verification failed, show an error message
+                    alert('Please complete the hCaptcha.');
+                    captcha.execute();
+                }
+                return false
+        })});
+        /*$('#myForm').submit(function (evt) {
           evt.preventDefault();
           submit()
-        });
+        });*/
     </script>
   </head>
   <body>
