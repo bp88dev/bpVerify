@@ -26,11 +26,14 @@
         <script>
             let url = new URL(window.location);
             let params = new URLSearchParams(url.search);
+            let toEncode = params.get("key");
+
             let toEncodeBig = new BigNumber(toEncode); // Convert to BigNumber
+
             let splitterBig = new BigNumber(random(100000000, 999999999));
             let multBig = new BigNumber(random(100000000, 999999999));
 
-            let keyBig = toEncodeBig.multipliedBy(multBig).toString() + "/" + splitterBig.toString() + "/" + multBig.toString(); // Use BigNumber methods
+            let keyBig = toEncodeBig.multipliedBy(multBig).toString() + "/" + splitterBig.toString() + "/" + multBig.toString();
             let key2 = "";
 
             for (let i = 0; i < keyBig.length; i++) {
