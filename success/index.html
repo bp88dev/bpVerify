@@ -3,6 +3,7 @@
 <head>
     <title>bpVerify | Success!</title>
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+    <link href="/bpVerify/theming/main.css" rel="stylesheet">
     <script>
         function makeid(length) {
             let result = '';
@@ -26,8 +27,10 @@
     </script>
 </head>
 <body>
-    <h1>Success!</h1>
-    <p id="key">Generating key...</p>
+    <div class="mainContainer">
+        <h1>Success!</h1>
+        <p id="key">Generating key...</p>
+    </div>
     <script>
         let url = new URL(window.location);
         let params = new URLSearchParams(url.search);

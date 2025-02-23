@@ -1,0 +1,51 @@
+body {
+    font-family: 'Montserrat';
+    background-color: #000000;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    left: 0;
+    right: 0;
+  }
+  text {
+    color: #000000
+  }
+  .mainContainer {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  .container {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  buttn {
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    padding: 10px;
+  }
+  .buttn {
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    padding: 10px;
+  }
+  br {
+    padding: 30px;
+  }

@@ -4,6 +4,7 @@
     <title>bpVerify | Verify</title>
     <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+    <link href="/bpVerify/theming/main.css" rel="stylesheet">
     <script>
       window.onload = setTimeout(setupCaptcha, 1000);
       function setupCaptcha() {
@@ -42,10 +43,12 @@
     </script>
   </head>
   <body>
-    <h1>bpVerify</h1>
-    <form id="myForm" method="POST">
-      <div class="h-captcha" data-sitekey="44744750-3c68-4f10-9574-b4d260fc3946" data-theme="dark"></div>
-      <button type="submit">Submit</button>
-    </form>
+    <div class="mainContainer">
+      <h1>bpVerify</h1>
+      <form id="myForm" method="POST">
+        <div class="h-captcha" data-sitekey="44744750-3c68-4f10-9574-b4d260fc3946" data-theme="dark"></div>
+        <button type="submit" class="buttn">Submit</button>
+      </form>
+    </div>
   </body>
 </html>
