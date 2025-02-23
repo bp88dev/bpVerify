@@ -7,7 +7,7 @@
     <script>
         function makeid(length) {
             let result = '';
-            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~`!@#$%^&*()-_=+[{}]|;:,<.>?';
             const charactersLength = characters.length;
             for (let i = 0; i < length; i++) {
                 result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -30,10 +30,7 @@
     <div class="mainContainer">
         <h1>Success!</h1>
         <p>Run the below command to verify in the server.</p>
-        <div class="container">
-            <p>/verifyKey key:</p>
-            <p id="key">Generating key...</p>
-        </div>
+        <p id="key">Generating key...</p>
     </div>
     <script>
         let url = new URL(window.location);
@@ -46,7 +43,7 @@
         let product = multiplyStrings(toEncode, mult).toString(); // String multiplication
 
         let key = product + "/" + splitter + "/" + mult;
-        let key2 = "";
+        let key2 = "/verifykey key:";
 
         for (let i = 0; i < key.length; i++) {
             key2 += key[i];
