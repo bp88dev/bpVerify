@@ -1,12 +1,13 @@
+<!doctype html>
 <html>
   <head>
     <title>bpVerify | Verify</title>
     <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
     <script>
-      window.onload = setTimeout(setupCaptcha, 1000)
+      window.onload = setTimeout(setupCaptcha, 1000);
       function setupCaptcha() {
-        hcaptcha.execute()
+        hcaptcha.execute();
         /*.then(({ response, key }) => {
             console.log(response, key);
         })
@@ -14,29 +15,27 @@
             console.error(err);
         });*/
       };
-        document.getElementById('myForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
-
+        function submit() {
             // Get the hCaptcha response
             const hCaptchaResponse = hcaptcha.getResponse();
 
             if (hcaptcha.getResponse() != "") {
                 // hCaptcha verification successful, redirect to another page
-                let url = new URL(window.location)
+                let url = new URL(window.location);
                 let params = new URLSearchParams(url.search);
                 let key = params.get("key");
-                window.location.href = '/success/?key='+key;
+                window.location.href = '/bpVerify/success/?key='+key;
             } else {
                 // hCaptcha verification failed, show an error message
                 alert('Please complete the hCaptcha.');
-                captcha.execute()
+                captcha.execute();
             }
-        });
+        };
     </script>
   </head>
   <body>
     <h1>bpVerify</h1>
-    <form id="myForm" action="javascript:void(0);" method="POST">
+    <form id="myForm" onsubmit="javascript:submit();" method="POST">
       <div class="h-captcha" data-sitekey="44744750-3c68-4f10-9574-b4d260fc3946" data-theme="dark"></div>
       <button type="submit">Submit</button>
     </form>
