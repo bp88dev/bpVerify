@@ -20,12 +20,16 @@
             // Get the hCaptcha response
             const hCaptchaResponse = hcaptcha.getResponse();
 
-            if (hCaptchaResponse) {
+            if (hcaptcha.getResponse() != "") {
                 // hCaptcha verification successful, redirect to another page
-                window.location.href = '/success';
+                let url = new URL(window.location)
+                let params = new URLSearchParams(url.search);
+                let key = params.get("key");
+                window.location.href = '/success/?key='+key;
             } else {
                 // hCaptcha verification failed, show an error message
                 alert('Please complete the hCaptcha.');
+                captcha.execute()
             }
         });
     </script>
