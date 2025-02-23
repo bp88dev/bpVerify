@@ -1,48 +1,53 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>bpVerify | Success!</title>
-        <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bignumber.js/9.1.2/bignumber.min.js"></script>  </script>
-        <script>
-            function makeid(length) {
-                let result = '';
-                const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-                const charactersLength = characters.length;
-                let counter = 0;
-                while (counter < length) {
-                    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-                    counter += 1;
-                };
-                return result;
-            };
-            function random(min, max) {
-                return Math.round(Math.random() * (max - min) + min);
+<head>
+    <title>bpVerify | Success!</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+    <script>
+        function makeid(length) {
+            let result = '';
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            const charactersLength = characters.length;
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
             }
-        </script>
-    </head>
-    <body>
-        <h1>Success!</h1>
-        <p id="key">Generating key...</p>
-        <script>
-            let url = new URL(window.location);
-            let params = new URLSearchParams(url.search);
-            let toEncode = params.get("key");
+            return result;
+        };
 
-            let toEncodeBig = new BigNumber(toEncode); // Convert to BigNumber
+        function random(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
 
-            let splitterBig = new BigNumber(random(100000000, 999999999));
-            let multBig = new BigNumber(random(100000000, 999999999));
+        function multiplyStrings(numStr, multStr) { // String multiplication
+            let num = BigInt(numStr);
+            let mult = BigInt(multStr);
+            return num * mult;
+        }
+    </script>
+</head>
+<body>
+    <h1>Success!</h1>
+    <p id="key">Generating key...</p>
+    <script>
+        let url = new URL(window.location);
+        let params = new URLSearchParams(url.search);
+        let toEncode = params.get("key");
 
-            let keyBig = toEncodeBig.multipliedBy(multBig).toString() + "/" + splitterBig.toString() + "/" + multBig.toString();
-            let key2 = "";
+        let splitter = random(100000000, 999999999).toString();  // Keep as string
+        let mult = random(100000000, 999999999).toString();    // Keep as string
 
-            for (let i = 0; i < keyBig.length; i++) {
-                key2 += keyBig[i];
-                if (random(0, 1) == 1) {
-                    key2 += makeid(1);
-                }
+        let product = multiplyStrings(toEncode, mult).toString(); // String multiplication
+
+        let key = product + "/" + splitter + "/" + mult;
+        let key2 = "";
+
+        for (let i = 0; i < key.length; i++) {
+            key2 += key[i];
+            if (random(0, 1) == 1) {
+                key2 += makeid(1);
             }
-            $("#key").text(key2);
-        </script>
-    </body>
+        }
+        $("#key").text(key2);
+    </script>
+</body>
 </html>
